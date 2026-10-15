@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="vintage-parchment">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>⚙️ Station Master Control Console | Admin Desk</title>
+  <meta name="description" content="Administrative control center to manage portfolio profile, projects, competencies, inquiries, and backup archives.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="assets/images/avatar-pixel.png">
+</head>
+<body class="vintage-body">
+
+  <div class="vintage-overlay" id="vintageOverlay" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="vintage-header" id="header">
+    <div class="header-container">
+      <div class="brand-badge">
+        <a href="index.html" class="brand-link">
+          <span class="brand-bracket">[</span>
+          <span class="brand-text">CSE://STATION_MASTER</span>
+          <span class="brand-bracket">]</span>
+        </a>
+        <div class="status-pill">
+          <span class="status-indicator"></span>
+          <span class="status-label">CONTROL ACCESS LEVEL: 0</span>
+        </div>
+      </div>
+
+      <nav class="nav-links" id="mainNav">
+        <a href="index.html" class="nav-item"><span>00.</span> Home</a>
+        <a href="about.html" class="nav-item"><span>01.</span> About</a>
+        <a href="terminal.html" class="nav-item"><span>02.</span> Terminal</a>
+        <a href="projects.html" class="nav-item"><span>03.</span> Projects</a>
+        <a href="skills.html" class="nav-item"><span>04.</span> Skills</a>
+        <a href="academics.html" class="nav-item"><span>05.</span> Academics</a>
+        <a href="experience.html" class="nav-item"><span>06.</span> Experience</a>
+        <a href="contact.html" class="nav-item"><span>07.</span> Dispatch</a>
+      </nav>
+
+      <div class="header-controls">
+        <a href="index.html" class="vintage-btn btn-sm btn-outline">👁️ View Public Site</a>
+      </div>
+
+      <button class="mobile-toggle" id="mobileMenuToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Retro Marquee Ticker Tape -->
+  <div class="retro-ticker-tape" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="ticker-item"><span class="ticker-dot">⚡</span> SCARFACE LAB RESEARCH CLUSTER</span>
+      <span class="ticker-item"><span class="ticker-dot">●</span> STATION MASTER ADMIN DESK</span>
+      <span class="ticker-item"><span class="ticker-dot">●</span> FULL CRUD LIVE SYNCHRONIZATION</span>
+      <span class="ticker-item"><span class="ticker-dot">●</span> MADE ON SCARFACE LAB</span>
+      <span class="ticker-item"><span class="ticker-dot">⚡</span> SCARFACE LAB RESEARCH CLUSTER</span>
+      <span class="ticker-item"><span class="ticker-dot">●</span> STATION MASTER ADMIN DESK</span>
+      <span class="ticker-item"><span class="ticker-dot">●</span> FULL CRUD LIVE SYNCHRONIZATION</span>
+      <span class="ticker-item"><span class="ticker-dot">●</span> MADE ON SCARFACE LAB</span>
+    </div>
+  </div>
+
+  <!-- Standalone Admin Page Wrapper -->
+  <div class="admin-page-wrapper">
+    <div class="admin-container parchment-paper">
+      
+      <!-- Admin Header -->
+      <div class="admin-header">
+        <div class="admin-header-left">
+          <div class="admin-seal">CSE MASTER DESK</div>
+          <div>
+            <h2 class="admin-title">Station Master Control Console</h2>
+            <p class="admin-subtitle">Live modifications instantly update all pages and persist to backend storage.</p>
+          </div>
+        </div>
+        <div class="admin-header-actions">
+          <a href="index.html" class="vintage-btn btn-sm">👁️ Public Home</a>
+        </div>
+      </div>
+
+      <!-- Password Lock Screen -->
+      <div class="admin-lock-screen" id="adminLockScreen">
+        <div class="lock-box parchment-paper">
+          <div class="lock-icon">🔒</div>
+          <h3 class="lock-title">Restricted Engineering Console</h3>
+          <p class="lock-desc">Enter access code to enter master workstation. Default pin: <code>admin123</code></p>
+          <form id="adminLoginForm" class="lock-form">
+            <input type="password" id="adminPinInput" class="vintage-input" placeholder="Enter Access Code..." value="admin123" required autofocus>
+            <button type="submit" class="vintage-btn btn-primary">Authenticate Console</button>
+          </form>
+          <div class="lock-feedback" id="lockFeedback"></div>
+        </div>
+      </div>
+
+      <!-- Admin Main Workspace -->
+      <div class="admin-workspace" id="adminWorkspace" style="display: none;">
+        
+        <!-- Sidebar Navigation Tabs -->
+        <aside class="admin-sidebar">
+          <button class="admin-tab-btn active" data-tab="tab-profile">
+            <span class="tab-icon">👤</span> Profile & Hero
+          </button>
+          <button class="admin-tab-btn" data-tab="tab-projects">
+            <span class="tab-icon">💼</span> Projects (<span id="adminProjectCount">0</span>)
+          </button>
+          <button class="admin-tab-btn" data-tab="tab-skills">
+            <span class="tab-icon">🧠</span> Skills (<span id="adminSkillCount">0</span>)
+          </button>
+          <button class="admin-tab-btn" data-tab="tab-academics">
+            <span class="tab-icon">🎓</span> Academics & Exp
+          </button>
+          <button class="admin-tab-btn" data-tab="tab-inbox">
+            <span class="tab-icon">📬</span> Inquiries <span class="tab-counter" id="adminInboxCount">0</span>
+          </button>
+          <button class="admin-tab-btn" data-tab="tab-appearance">
+            <span class="tab-icon">🎨</span> Themes & Style
+          </button>
+          <button class="admin-tab-btn" data-tab="tab-music">
+            <span class="tab-icon">🎵</span> Music & Atmosphere
+          </button>
+          <button class="admin-tab-btn" data-tab="tab-vault">
+            <span class="tab-icon">📁</span> Personal Vault & Drive (<span id="adminVaultCount">0</span>)
+          </button>
+          <button class="admin-tab-btn" data-tab="tab-backup">
+            <span class="tab-icon">💾</span> Backup & Export
+          </button>
+        </aside>
+
+        <!-- Main Tab Contents -->
+        <div class="admin-tab-content-area">
+
+          <!-- TAB 1: PROFILE & HERO -->
+          <div class="admin-tab-pane active" id="tab-profile">
+            <div class="tab-pane-header">
+              <h3 class="pane-title">Personal & CSE Student Profile</h3>
+              <p class="pane-subtitle">Update your personal identifiers, academic degree, bio, and social handles.</p>
+            </div>
+
+            <form id="profileEditForm" class="vintage-admin-form">
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label">Full Name</label>
+                  <input type="text" id="adminProfName" class="vintage-input" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Engineering Role / Title</label>
+                  <input type="text" id="adminProfRole" class="vintage-input" required>
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label">University / Department</label>
+                  <input type="text" id="adminProfUniversity" class="vintage-input">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Degree & Year</label>
+                  <input type="text" id="adminProfDegree" class="vintage-input">
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label">Cumulative GPA / Honors</label>
+                  <input type="text" id="adminProfGpa" class="vintage-input">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Availability / Status</label>
+                  <input type="text" id="adminProfStatus" class="vintage-input">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Biographical Statement</label>
+                <textarea id="adminProfBio" rows="4" class="vintage-input"></textarea>
+              </div>
+
+              <!-- Avatar / Profile Picture Management -->
+              <div class="form-group parchment-paper" style="padding: 1.25rem; border: var(--border-width) solid var(--border-color); margin-bottom: 1.5rem;">
+                <label class="form-label" style="font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem;">👤 Profile Picture & 2D Avatar</label>
+                <p style="font-size: 0.8rem; color: var(--ink-secondary); margin-bottom: 1rem;">
+                  Add your custom photo or select a vintage 2D avatar. You can upload any image or remove it at any time.
+                </p>
+
+                <div style="display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap;">
+                  <!-- Live Preview Frame -->
+                  <div class="polaroid-frame" style="width: 100px; padding: 6px; box-shadow: var(--shadow-tactile-sm); background: var(--bg-surface); text-align: center;">
+                    <img src="assets/images/avatar-notionist.png" alt="Current Avatar Preview" id="adminAvatarPreviewImg" style="width: 100%; height: 85px; object-fit: cover; border: 1px solid var(--border-color);">
+                    <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--ink-muted); display: block; margin-top: 4px;" id="adminAvatarStatus">Active Photo</span>
+                  </div>
+
+                  <!-- Controls Cluster -->
+                  <div style="flex: 1; min-width: 240px; display: flex; flex-direction: column; gap: 0.75rem;">
+                    <div class="avatar-select-row" style="display: flex; gap: 0.5rem;">
+                      <input type="text" id="adminProfAvatar" class="vintage-input" placeholder="Image path or URL..." style="flex: 1;">
+                      <label class="vintage-btn btn-sm btn-primary file-upload-label" style="cursor: pointer; display: flex; align-items: center; gap: 0.3rem;">
+                        📁 Upload Photo
+                        <input type="file" id="adminAvatarFileInput" accept="image/*" style="display:none;">
+                      </label>
+                      <button type="button" class="vintage-btn btn-sm btn-outline btn-danger" id="adminRemoveAvatarBtn" title="Remove Profile Picture">
+                        🗑️ Remove
+                      </button>
+                    </div>
+
+                    <div class="avatar-preset-previews" style="display: flex; align-items: center; gap: 0.5rem;">
+                      <span class="preview-text" style="font-family: var(--font-mono); font-size: 0.75rem;">Quick 2D Presets:</span>
+                      <img src="assets/images/avatar-notionist.png" alt="Preset 1" class="preset-thumb" data-set-avatar="assets/images/avatar-notionist.png" title="Hand-Drawn 2D" style="width: 32px; height: 32px; cursor: pointer; border: 1px solid var(--border-color);">
+                      <img src="assets/images/avatar-pixel.png" alt="Preset 2" class="preset-thumb" data-set-avatar="assets/images/avatar-pixel.png" title="Pixel Art" style="width: 32px; height: 32px; cursor: pointer; border: 1px solid var(--border-color);">
+                      <img src="assets/images/avatar-retro-bot.png" alt="Preset 3" class="preset-thumb" data-set-avatar="assets/images/avatar-retro-bot.png" title="Retro Bot" style="width: 32px; height: 32px; cursor: pointer; border: 1px solid var(--border-color);">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label">Contact Email</label>
+                  <input type="email" id="adminProfEmail" class="vintage-input">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Physical Coordinates / Location</label>
+                  <input type="text" id="adminProfLocation" class="vintage-input">
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label">GitHub URL</label>
+                  <input type="url" id="adminProfGithub" class="vintage-input">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">LinkedIn URL</label>
+                  <input type="url" id="adminProfLinkedin" class="vintage-input">
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label">LeetCode Profile URL</label>
+                  <input type="url" id="adminProfLeetcode" class="vintage-input">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Codeforces / Extra URL</label>
+                  <input type="url" id="adminProfCodeforces" class="vintage-input">
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="vintage-btn btn-primary">💾 Save Profile Modifications</button>
+                <span class="save-indicator" id="profileSaveIndicator"></span>
+              </div>
+            </form>
+          </div>
+
+          <!-- TAB 2: PROJECTS MANAGER (FULL CRUD) -->
+          <div class="admin-tab-pane" id="tab-projects">
+            <div class="tab-pane-header flex-between">
+              <div>
+                <h3 class="pane-title">Projects & Systems Repository</h3>
+                <p class="pane-subtitle">Add, edit, reorder, or retire project blueprints.</p>
+              </div>
+              <button class="vintage-btn btn-primary" id="addNewProjectBtn">+ Add New Blueprint</button>
+            </div>
+
+            <!-- Projects Table -->
+            <div class="admin-table-container">
+              <table class="vintage-table">
+                <thead>
+                  <tr>
+                    <th>Title & Category</th>
+                    <th>Year</th>
+                    <th>Tech Stack</th>
+                    <th>Badge Metric</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="adminProjectsTableBody"></tbody>
+              </table>
+            </div>
+
+            <!-- Add/Edit Project Form -->
+            <div class="project-editor-card parchment-paper" id="projectEditorCard" style="display: none;">
+              <h4 class="editor-title" id="projectEditorTitle">Edit Project Blueprint</h4>
+              <form id="projectForm" class="vintage-admin-form">
+                <input type="hidden" id="projEditId">
+
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label class="form-label">Project Title <span class="required">*</span></label>
+                    <input type="text" id="projTitle" class="vintage-input" required>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Category</label>
+                    <select id="projCategory" class="vintage-input vintage-select">
+                      <option value="Systems & OS">Systems & OS</option>
+                      <option value="Compilers & Langs">Compilers & Langs</option>
+                      <option value="Distributed Systems">Distributed Systems</option>
+                      <option value="Web & Algorithms">Web & Algorithms</option>
+                      <option value="AI / ML & Math">AI / ML & Math</option>
+                      <option value="Tooling & CLI">Tooling & CLI</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label class="form-label">Tagline (One sentence)</label>
+                    <input type="text" id="projTagline" class="vintage-input" placeholder="e.g. 32-bit x86 kernel with memory paging">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Metric Badge</label>
+                    <input type="text" id="projBadge" class="vintage-input" placeholder="e.g. O(1) Scheduler, 3.2x Faster">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Full Technical Specification & Description</label>
+                  <textarea id="projDescription" rows="4" class="vintage-input" required></textarea>
+                </div>
+
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label class="form-label">Tech Stack (comma-separated)</label>
+                    <input type="text" id="projTechStack" class="vintage-input" placeholder="C++, Assembly, Linux, QEMU">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Project Year</label>
+                    <input type="text" id="projYear" class="vintage-input" value="2025">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Blueprint Cover Image Path / URL</label>
+                  <div class="avatar-select-row">
+                    <input type="text" id="projImage" class="vintage-input" placeholder="assets/images/project-circuits.jpg">
+                    <label class="vintage-btn btn-sm btn-outline file-upload-label">
+                      📁 Upload
+                      <input type="file" id="projImageFileInput" accept="image/*" style="display:none;">
+                    </label>
+                  </div>
+                  <div class="project-image-presets">
+                    <span class="preview-text">Stock Tech Presets:</span>
+                    <button type="button" class="preset-btn" data-set-img="assets/images/project-circuits.jpg">Circuits</button>
+                    <button type="button" class="preset-btn" data-set-img="assets/images/project-terminal.jpg">Terminal</button>
+                    <button type="button" class="preset-btn" data-set-img="assets/images/project-vintage-pc.jpg">Vintage PC</button>
+                    <button type="button" class="preset-btn" data-set-img="assets/images/project-devdesk.jpg">Dev Desk</button>
+                    <button type="button" class="preset-btn" data-set-img="assets/images/project-keyboard.jpg">Hardware</button>
+                  </div>
+                </div>
+
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label class="form-label">GitHub Repository URL</label>
+                    <input type="url" id="projGithub" class="vintage-input" placeholder="https://github.com/...">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Live Demo / Documentation URL</label>
+                    <input type="url" id="projDemo" class="vintage-input" placeholder="https://...">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="checkbox-label">
+                    <input type="checkbox" id="projFeatured"> Feature on Main Showcase
+                  </label>
+                </div>
+
+                <div class="form-actions">
+                  <button type="submit" class="vintage-btn btn-primary">Save Blueprint</button>
+                  <button type="button" class="vintage-btn btn-outline" id="cancelProjectEditBtn">Cancel</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- TAB 3: SKILLS MANAGER (FULL CRUD) -->
+          <div class="admin-tab-pane" id="tab-skills">
+            <div class="tab-pane-header flex-between">
+              <div>
+                <h3 class="pane-title">Competency & Skill Registry</h3>
+                <p class="pane-subtitle">Manage programming languages, CS fundamentals, and systems expertise.</p>
+              </div>
+              <button class="vintage-btn btn-primary" id="addNewSkillBtn">+ Add New Skill</button>
+            </div>
+
+            <div class="admin-skills-grid" id="adminSkillsGrid"></div>
+
+            <!-- Add/Edit Skill Form -->
+            <div class="skill-editor-card parchment-paper" id="skillEditorCard" style="display: none;">
+              <h4 class="editor-title" id="skillEditorTitle">Edit Competency</h4>
+              <form id="skillForm" class="vintage-admin-form">
+                <input type="hidden" id="skillEditIndex">
+
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label class="form-label">Skill Name <span class="required">*</span></label>
+                    <input type="text" id="skillName" class="vintage-input" placeholder="e.g. Data Structures & Algorithms" required>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Category</label>
+                    <select id="skillCategory" class="vintage-input vintage-select">
+                      <option value="Core CS">Core CS Fundamentals</option>
+                      <option value="Languages">Programming Languages</option>
+                      <option value="Frameworks">Frameworks & Web</option>
+                      <option value="Tools & Systems">Tools, Systems & DevOps</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label class="form-label">Proficiency Level (0 - 100%)</label>
+                    <div class="range-group">
+                      <input type="range" id="skillLevel" min="10" max="100" value="85" class="vintage-range">
+                      <span id="skillLevelDisplay">85%</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Icon Identifier</label>
+                    <select id="skillIcon" class="vintage-input vintage-select">
+                      <option value="cplusplus">C++ (cplusplus)</option>
+                      <option value="c">C (c)</option>
+                      <option value="python">Python</option>
+                      <option value="rust">Rust</option>
+                      <option value="linux">Linux Kernel</option>
+                      <option value="git">Git</option>
+                      <option value="docker">Docker</option>
+                      <option value="postgresql">PostgreSQL</option>
+                      <option value="javascript">JavaScript / TS</option>
+                      <option value="react">React</option>
+                      <option value="java">Java</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Key Competency Details / Subtopics</label>
+                  <input type="text" id="skillDesc" class="vintage-input" placeholder="e.g. Red-Black Trees, Graphs, DP, Heap Allocations">
+                </div>
+
+                <div class="form-actions">
+                  <button type="submit" class="vintage-btn btn-primary">Save Skill</button>
+                  <button type="button" class="vintage-btn btn-outline" id="cancelSkillEditBtn">Cancel</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- TAB 4: ACADEMICS & EXPERIENCE -->
+          <div class="admin-tab-pane" id="tab-academics">
+            <div class="tab-pane-header">
+              <h3 class="pane-title">Academics, Coursework & Experience</h3>
+              <p class="pane-subtitle">Manage degree records, course grades, teaching assistantships, and internships.</p>
+            </div>
+
+            <!-- Education Editor -->
+            <div class="sub-pane-card parchment-paper">
+              <h4 class="sub-pane-title">Degree & Academic Standing</h4>
+              <form id="educationEditForm" class="vintage-admin-form">
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label class="form-label">Degree Title</label>
+                    <input type="text" id="adminEduDegree" class="vintage-input">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Institution / University</label>
+                    <input type="text" id="adminEduInstitution" class="vintage-input">
+                  </div>
+                </div>
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label class="form-label">Academic Duration</label>
+                    <input type="text" id="adminEduPeriod" class="vintage-input">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Score / CGPA</label>
+                    <input type="text" id="adminEduScore" class="vintage-input">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Core Coursework (one per line)</label>
+                  <textarea id="adminEduCoursework" rows="4" class="vintage-input" placeholder="Data Structures & Algorithms&#10;Operating Systems&#10;Compiler Design"></textarea>
+                </div>
+                <button type="submit" class="vintage-btn btn-primary">Save Education Details</button>
+              </form>
+            </div>
+
+            <!-- Experience Manager -->
+            <div class="sub-pane-card parchment-paper">
+              <div class="flex-between">
+                <h4 class="sub-pane-title">Experience & Internships</h4>
+                <button class="vintage-btn btn-sm btn-primary" id="addNewExpBtn">+ Add Experience</button>
+              </div>
+
+              <div class="admin-experience-list" id="adminExperienceList"></div>
+
+              <!-- Exp Form -->
+              <div class="exp-editor-card" id="expEditorCard" style="display: none;">
+                <h5 id="expEditorTitle">Add Experience</h5>
+                <form id="expForm" class="vintage-admin-form">
+                  <input type="hidden" id="expEditId">
+                  <div class="form-grid-2">
+                    <div class="form-group">
+                      <label class="form-label">Role / Position</label>
+                      <input type="text" id="expRole" class="vintage-input" required>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">Company / Lab</label>
+                      <input type="text" id="expCompany" class="vintage-input" required>
+                    </div>
+                  </div>
+                  <div class="form-grid-2">
+                    <div class="form-group">
+                      <label class="form-label">Period</label>
+                      <input type="text" id="expPeriod" class="vintage-input" placeholder="Summer 2025">
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">Type</label>
+                      <select id="expType" class="vintage-input vintage-select">
+                        <option value="Internship">Internship</option>
+                        <option value="Academic">Academic / TA</option>
+                        <option value="Leadership">Leadership / Club</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Description</label>
+                    <textarea id="expDesc" rows="3" class="vintage-input" required></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Badges / Tech (comma-separated)</label>
+                    <input type="text" id="expBadges" class="vintage-input" placeholder="C++, Distributed Systems, TA">
+                  </div>
+                  <div class="form-actions">
+                    <button type="submit" class="vintage-btn btn-primary">Save Entry</button>
+                    <button type="button" class="vintage-btn btn-outline" id="cancelExpEditBtn">Cancel</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 5: INBOX & MESSAGES -->
+          <div class="admin-tab-pane" id="tab-inbox">
+            <div class="tab-pane-header flex-between">
+              <div>
+                <h3 class="pane-title">Telegraph Dispatch Inbox</h3>
+                <p class="pane-subtitle">Direct messages dispatched from your portfolio contact form.</p>
+              </div>
+              <div class="inbox-filter-toggles">
+                <button class="filter-pill active" data-inbox-filter="all">All</button>
+                <button class="filter-pill" data-inbox-filter="unread">Unread</button>
+                <button class="filter-pill" data-inbox-filter="starred">Starred ⭐</button>
+              </div>
+            </div>
+
+            <div class="admin-inbox-layout">
+              <div class="inbox-list parchment-paper" id="inboxList"></div>
+              <div class="inbox-viewer parchment-paper" id="inboxViewer">
+                <div class="inbox-empty-state">Select a dispatch from the list to read.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 6: THEMES & APPEARANCE -->
+          <div class="admin-tab-pane" id="tab-appearance">
+            <div class="tab-pane-header">
+              <h3 class="pane-title">Appearance & Vintage 2D Styling</h3>
+              <p class="pane-subtitle">Choose between classic paper, vintage CRT phosphor, or engineering blueprint.</p>
+            </div>
+
+            <div class="theme-cards-grid">
+              <div class="theme-select-card" data-set-theme="vintage-parchment">
+                <div class="theme-preview-box parchment-prev">
+                  <div class="prev-badge">Aa</div>
+                  <div class="prev-line"></div>
+                </div>
+                <h4 class="theme-card-name">📜 Parchment & Ink</h4>
+                <p class="theme-card-desc">1920s handcrafted bookprint, warm aged paper, and dark carbon ink.</p>
+                <button class="vintage-btn btn-sm btn-outline select-theme-btn">Activate</button>
+              </div>
+
+              <div class="theme-select-card" data-set-theme="terminal-phosphor">
+                <div class="theme-preview-box phosphor-prev">
+                  <div class="prev-badge">&gt;_</div>
+                  <div class="prev-line"></div>
+                </div>
+                <h4 class="theme-card-name">📟 Terminal Phosphor</h4>
+                <p class="theme-card-desc">1970s mainframe VT-100 green phosphor cathode ray tube aesthetic.</p>
+                <button class="vintage-btn btn-sm btn-outline select-theme-btn">Activate</button>
+              </div>
+
+              <div class="theme-select-card" data-set-theme="blueprint-cyan">
+                <div class="theme-preview-box blueprint-prev">
+                  <div class="prev-badge">📐</div>
+                  <div class="prev-line"></div>
+                </div>
+                <h4 class="theme-card-name">📐 Blueprint Cyan</h4>
+                <p class="theme-card-desc">1960s architectural cyan blueprint with white ink drafts and calipers.</p>
+                <button class="vintage-btn btn-sm btn-outline select-theme-btn">Activate</button>
+              </div>
+
+              <div class="theme-select-card" data-set-theme="amber-crt">
+                <div class="theme-preview-box amber-prev">
+                  <div class="prev-badge">💡</div>
+                  <div class="prev-line"></div>
+                </div>
+                <h4 class="theme-card-name">💡 Amber Gas Discharge</h4>
+                <p class="theme-card-desc">1980s warm amber terminal screen with neon glow and high contrast.</p>
+                <button class="vintage-btn btn-sm btn-outline select-theme-btn">Activate</button>
+              </div>
+            </div>
+
+            <!-- Website Background Image Manager -->
+            <div class="parchment-paper" style="padding: 1.25rem; border: var(--border-width) solid var(--border-color); margin-bottom: 1.5rem;">
+              <h4 class="sub-pane-title" style="margin-bottom: 0.4rem;">🖼️ Website Background Artwork</h4>
+              <p style="font-size: 0.82rem; color: var(--ink-secondary); margin-bottom: 1.25rem;">
+                Control the fixed atmospheric background artwork displayed across all public pages.
+              </p>
+
+              <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center;">
+                <!-- Background Preview Box -->
+                <div id="adminBgPreviewBox" style="width: 240px; height: 135px; border: var(--border-width) solid var(--border-color); background-size: cover; background-position: center; position: relative; box-shadow: var(--shadow-tactile-sm); background-image: url('assets/images/bg1.jpg');">
+                  <span id="adminBgBadge" style="position: absolute; bottom: 6px; left: 6px; background: rgba(0,0,0,0.75); color: #fff; font-family: var(--font-mono); font-size: 0.65rem; padding: 2px 6px; border-radius: 2px;">
+                    bg1.jpg (Active)
+                  </span>
+                </div>
+
+                <!-- Background Actions Cluster -->
+                <div style="flex: 1; min-width: 260px; display: flex; flex-direction: column; gap: 0.75rem;">
+                  <div class="form-group" style="margin: 0;">
+                    <label class="form-label" style="font-size: 0.75rem;">Background Image Path or URL</label>
+                    <div style="display: flex; gap: 0.5rem;">
+                      <input type="text" id="adminBgImageUrl" class="vintage-input" placeholder="assets/images/bg1.jpg" value="assets/images/bg1.jpg" style="flex: 1;">
+                      <label class="vintage-btn btn-sm btn-primary file-upload-label" style="cursor: pointer; display: flex; align-items: center; gap: 0.3rem;">
+                        📁 Upload Image
+                        <input type="file" id="adminBgFileInput" accept="image/*" style="display: none;">
+                      </label>
+                    </div>
+                  </div>
+
+                  <div style="display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap;">
+                    <button type="button" class="vintage-btn btn-sm btn-outline btn-danger" id="adminRemoveBgBtn" title="Delete or remove background image">
+                      🗑️ Delete Background
+                    </button>
+                    <button type="button" class="vintage-btn btn-sm btn-outline" id="adminSetDefaultBgBtn" title="Set to bg1.jpg artwork">
+                      🌌 Restore bg1.jpg
+                    </button>
+                    
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-left: auto; font-family: var(--font-mono); font-size: 0.75rem;">
+                      <span>Opacity:</span>
+                      <input type="range" id="adminBgOpacityRange" min="0.1" max="1" step="0.05" value="0.88" style="width: 80px; accent-color: var(--accent-rust); cursor: pointer;">
+                      <span id="adminBgOpacityVal">88%</span>
+                    </div>
+                  </div>
+
+                  <div>
+                    <button type="button" class="vintage-btn btn-sm btn-primary" id="adminSaveBgBtn">
+                      💾 Save Background Settings
+                    </button>
+                    <span id="adminBgFeedback" style="font-family: var(--font-mono); font-size: 0.78rem; margin-left: 0.5rem;"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="appearance-toggles parchment-paper">
+              <h4 class="sub-pane-title">Retro FX Switches</h4>
+              <div class="toggle-row">
+                <label class="toggle-label" for="toggleScanlines">
+                  <span>Display CRT Scanlines & Screen Curvature</span>
+                  <input type="checkbox" id="toggleScanlines" checked>
+                </label>
+              </div>
+              <div class="toggle-row">
+                <label class="toggle-label" for="toggleAudioFX">
+                  <span>Enable Mechanical Typewriter Keystroke Sound</span>
+                  <input type="checkbox" id="toggleAudioFX" checked>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB: MUSIC & ATMOSPHERE STUDIO -->
+          <div class="admin-tab-pane" id="tab-music">
+            <div class="tab-pane-header">
+              <h3 class="pane-title">🎵 Genshin BGM & Atmospheric FX Studio</h3>
+              <p class="pane-subtitle">Live control over acoustic fantasy background music, floating 2D box physics, canvas particles, and ticker text.</p>
+            </div>
+
+            <div class="admin-music-deck">
+
+              <!-- Live Player Console -->
+              <div class="music-console-card parchment-paper">
+                <div class="console-live-bar">
+                  <div class="console-live-status">
+                    <span class="status-indicator-dot" id="adminMusicStatusDot"></span>
+                    <span id="adminMusicStatusText">LIVE: AUDIO PAUSED</span>
+                  </div>
+                  <div class="console-track-banner">
+                    <span class="console-track-tag" id="adminMusicTrackTag">🍃 MONDSTADT WINDS</span>
+                    <span class="console-track-title" id="adminMusicTrackTitle">Dawn Winery Tavern (Acoustic)</span>
+                  </div>
+                </div>
+
+                <div class="console-controls-grid">
+                  <button type="button" class="vintage-btn btn-primary" id="adminPlayToggleBtn">
+                    <span id="adminPlayBtnIcon">▶</span> <span id="adminPlayBtnLabel">Start Master Audio</span>
+                  </button>
+                  <button type="button" class="vintage-btn btn-outline" id="adminPrevTrackBtn">⏮ Prev Track</button>
+                  <button type="button" class="vintage-btn btn-outline" id="adminNextTrackBtn">⏭ Next Track</button>
+                  <button type="button" class="vintage-btn btn-outline" id="adminMuteToggleBtn">🔇 Mute</button>
+
+                  <div class="console-volume-group">
+                    <span>🔊 Volume:</span>
+                    <input type="range" class="console-volume-slider" id="adminVolumeSlider" min="0" max="1" step="0.05" value="0.35">
+                    <span id="adminVolumeVal">35%</span>
+                  </div>
+                </div>
+
+                <div class="appearance-toggles" style="border-top: 1px dashed var(--border-color); padding-top: 1rem;">
+                  <div class="toggle-row">
+                    <label class="toggle-label" for="adminBgmAutoStart">
+                      <span>Auto-play BGM on visitor first gesture</span>
+                      <input type="checkbox" id="adminBgmAutoStart" checked>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Track Library & Custom Add -->
+              <div class="music-console-card parchment-paper">
+                <h4 class="sub-pane-title" style="margin-bottom: 0.5rem;">🎼 Genshin Acoustic Soundtrack Library</h4>
+                <p style="font-size: 0.82rem; color: var(--ink-secondary);">Manage audio files played in the background across all pages.</p>
+
+                <div style="overflow-x: auto;">
+                  <table class="track-library-table">
+                    <thead>
+                      <tr>
+                        <th>Region / Tag</th>
+                        <th>Track Title</th>
+                        <th>File / Source</th>
+                        <th style="width: 160px;">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody id="adminTrackTableBody">
+                      <!-- Rendered by admin.js -->
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Add Custom Track Form -->
+                <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px dashed var(--border-color);">
+                  <h5 style="font-family: var(--font-serif); font-size: 1.05rem; margin-bottom: 0.75rem;">➕ Add Custom Soundtrack to Playlist</h5>
+                  <form id="adminAddTrackForm" class="vintage-admin-form">
+                    <div class="form-grid-2">
+                      <div class="form-group">
+                        <label class="form-label">Soundtrack Title</label>
+                        <input type="text" id="adminNewTrackTitle" class="vintage-input" placeholder="e.g. Inazuma Gentle Flute" required>
+                      </div>
+                      <div class="form-group">
+                        <label class="form-label">Region / Tag</label>
+                        <input type="text" id="adminNewTrackTag" class="vintage-input" placeholder="e.g. ⚡ Inazuma Serenade" required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">Audio Source (MP3 File Path or URL)</label>
+                      <input type="text" id="adminNewTrackSrc" class="vintage-input" placeholder="e.g. assets/audio/genshin_bgm.mp3 or https://..." required>
+                    </div>
+                    <button type="submit" class="vintage-btn btn-primary btn-sm">+ Add to Active Playlist</button>
+                  </form>
+                </div>
+              </div>
+
+              <!-- 2D Floating Boxes & Atmosphere Controls -->
+              <div class="music-console-card parchment-paper">
+                <h4 class="sub-pane-title" style="margin-bottom: 0.5rem;">🎮 2D Floating Boxes & Atmosphere Physics</h4>
+                <p style="font-size: 0.82rem; color: var(--ink-secondary);">Control the continuous 2D retro game levitation animations and atmospheric effects.</p>
+
+                <div class="fx-controls-grid">
+
+                  <!-- Floating Boxes Card -->
+                  <div class="fx-card">
+                    <div class="fx-card-title">🪂 2D Floating Boxes</div>
+                    <p style="font-size: 0.8rem; color: var(--ink-secondary);">Makes all stat boxes, blueprint cards, sector tiles, and windows bob gently like floating game elements.</p>
+                    <div class="toggle-row">
+                      <label class="toggle-label" for="adminToggleFloatingBoxes">
+                        <span>Enable Floating Boxes</span>
+                        <input type="checkbox" id="adminToggleFloatingBoxes" checked>
+                      </label>
+                    </div>
+                    <div class="form-group" style="margin-top: 0.5rem;">
+                      <label class="form-label">Levitation Motion Style</label>
+                      <select id="adminFloatingStyle" class="vintage-select">
+                        <option value="normal">Gentle Bobbing (Smooth 5.2s Cycle)</option>
+                        <option value="dynamic">Dynamic Game Physics (Faster 3.6s Cycle)</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Canvas Particles -->
+                  <div class="fx-card">
+                    <div class="fx-card-title">❄️ 2D Snowfall & Atmosphere</div>
+                    <p style="font-size: 0.8rem; color: var(--ink-secondary);">Drifting crystalline snowflakes with horizontal sine-wave flutter and mouse breeze physics.</p>
+                    <div class="form-group">
+                      <label class="form-label">Snowfall & Weather Mode</label>
+                      <select id="adminParticleDensity" class="vintage-select">
+                        <option value="85" selected>❄️ Gentle Snowfall (85 flakes)</option>
+                        <option value="190">🌨️ Heavy Blizzard (190 flakes)</option>
+                        <option value="0">⛅ Snowfall Disabled</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Ticker & Marquee -->
+                  <div class="fx-card" style="grid-column: 1 / -1;">
+                    <div class="fx-card-title">📜 Retro Ticker Tape & Footer Branding</div>
+                    <p style="font-size: 0.8rem; color: var(--ink-secondary);">Customize the moving ticker marquee text and bottom station credits.</p>
+                    <div class="form-group">
+                      <label class="form-label">Marquee Ticker Headline</label>
+                      <input type="text" id="adminTickerText" class="vintage-input" value="AVAILABLE FOR SWE INTERNSHIPS • VINTAGE 2D ARCHITECTURE • MADE ON SCARFACE LAB • MIR A K SAJID • SYSTEMS & COMPILERS">
+                    </div>
+                    <div class="form-grid-2">
+                      <div class="form-group">
+                        <label class="form-label">Footer Line 1 (Lab Branding)</label>
+                        <input type="text" id="adminFooterText" class="vintage-input" value="Made on Scarface Lab">
+                      </div>
+                      <div class="form-group">
+                        <label class="form-label">Footer Line 2 (Author & Program)</label>
+                        <input type="text" id="adminFooterAuthor" class="vintage-input" value="Mir A K Sajid • Computer Science & Engineering Student">
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div style="margin-top: 1.5rem;">
+                  <button type="button" class="vintage-btn btn-primary" id="saveAtmosphereSettingsBtn">
+                    💾 Save Studio & FX Configuration
+                  </button>
+                  <span id="saveFxFeedback" style="font-family: var(--font-mono); font-size: 0.8rem; margin-left: 0.75rem;"></span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- TAB: PERSONAL VAULT & GOOGLE DRIVE FILESYSTEM -->
+          <div class="admin-tab-pane" id="tab-vault">
+            <div class="tab-pane-header">
+              <h3 class="pane-title">Personal Vault & Google Drive Filesystem</h3>
+              <p class="pane-subtitle">Configure directory password protection and organize cloud-hosted documents, notes, and archives.</p>
+            </div>
+
+            <!-- Vault Password Card -->
+            <div class="sub-pane-card parchment-paper" style="margin-bottom: 1.5rem;">
+              <h4 class="sub-pane-title">🔒 Directory Encryption & Passphrase</h4>
+              <p style="font-size: 0.85rem; color: var(--ink-secondary); margin-bottom: 1rem;">
+                Set the access code required to unlock the floating Personal Directory on the public portfolio.
+              </p>
+              <form id="adminVaultPasswordForm" style="display: flex; gap: 0.75rem; align-items: flex-end; max-width: 480px;">
+                <div class="form-group" style="flex: 1; margin-bottom: 0;">
+                  <label class="form-label">Vault Access Password</label>
+                  <input type="text" id="adminVaultPasswordInput" class="vintage-input" placeholder="e.g. 1234" value="1234" required>
+                </div>
+                <button type="submit" class="vintage-btn btn-primary btn-sm">Save Vault Password</button>
+              </form>
+              <div id="adminVaultPasswordFeedback" style="font-family: var(--font-mono); font-size: 0.8rem; margin-top: 0.5rem;"></div>
+            </div>
+
+            <!-- Add Google Drive File Card -->
+            <div class="sub-pane-card parchment-paper" style="margin-bottom: 1.5rem;">
+              <h4 class="sub-pane-title">➕ Register Google Drive File / Resource</h4>
+              <p style="font-size: 0.85rem; color: var(--ink-secondary); margin-bottom: 1rem;">
+                Add any file or folder hosted on Google Drive. Simply paste the link here and it will render in the 2D retro filesystem.
+              </p>
+              <form id="adminAddDriveFileForm" class="vintage-admin-form">
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label class="form-label">Resource Title</label>
+                    <input type="text" id="adminDriveFileName" class="vintage-input" placeholder="e.g. Computer_Networks_Notes.pdf" required>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Google Drive Link URL</label>
+                    <input type="url" id="adminDriveFileUrl" class="vintage-input" placeholder="https://drive.google.com/file/d/..." required>
+                  </div>
+                </div>
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label class="form-label">Category / Folder</label>
+                    <input type="text" id="adminDriveFileFolder" class="vintage-input" placeholder="e.g. OS & Compilers" required list="adminDriveFolderDatalist">
+                    <datalist id="adminDriveFolderDatalist"></datalist>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">File Type & Size</label>
+                    <div style="display: flex; gap: 0.5rem;">
+                      <select id="adminDriveFileType" class="vintage-input vintage-select" style="flex: 1;">
+                        <option value="pdf">📄 PDF Document</option>
+                        <option value="zip">📦 ZIP Archive</option>
+                        <option value="code">💻 Code / Script</option>
+                        <option value="doc">📝 Word / Notes</option>
+                        <option value="sheet">📊 Spreadsheet</option>
+                        <option value="img">🖼️ Image / Slide</option>
+                      </select>
+                      <input type="text" id="adminDriveFileSize" class="vintage-input" placeholder="e.g. 4.2 MB" style="width: 120px;">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Description / Abstract (Optional)</label>
+                  <input type="text" id="adminDriveFileDesc" class="vintage-input" placeholder="Brief notes on what this file contains...">
+                </div>
+                <button type="submit" class="vintage-btn btn-primary btn-sm">+ Save to Drive Filesystem</button>
+              </form>
+            </div>
+
+            <!-- Existing Files Library Table -->
+            <div class="sub-pane-card parchment-paper">
+              <div class="flex-between" style="margin-bottom: 0.75rem;">
+                <h4 class="sub-pane-title" style="margin-bottom: 0;">📂 Cataloged Cloud Drive Files</h4>
+                <span id="adminDriveTotalBadge" style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-rust); font-weight: 700;"></span>
+              </div>
+              <div class="admin-table-container">
+                <table class="vintage-table">
+                  <thead>
+                    <tr>
+                      <th style="width: 45px;">Type</th>
+                      <th>File Name</th>
+                      <th>Folder</th>
+                      <th>Size</th>
+                      <th>Updated</th>
+                      <th style="text-align: right;">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="adminDriveTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 7: BACKUP & EXPORT -->
+          <div class="admin-tab-pane" id="tab-backup">
+            <div class="tab-pane-header">
+              <h3 class="pane-title">Data Backup, Transfer & Restore</h3>
+              <p class="pane-subtitle">Download your complete portfolio configuration as a JSON file or restore from a backup.</p>
+            </div>
+
+            <div class="backup-actions-grid">
+              <div class="backup-card parchment-paper">
+                <div class="backup-icon">📥</div>
+                <h4>Export Portfolio Archive</h4>
+                <p>Download a complete JSON snapshot of all profile fields, blueprints, skills, and logs.</p>
+                <button class="vintage-btn btn-primary" id="exportJsonBtn">Download portfolio_backup.json</button>
+              </div>
+
+              <div class="backup-card parchment-paper">
+                <div class="backup-icon">📤</div>
+                <h4>Import / Restore Backup</h4>
+                <p>Upload a previously exported JSON file to restore your portfolio configuration.</p>
+                <label class="vintage-btn btn-secondary file-upload-label">
+                  Choose JSON File
+                  <input type="file" id="importJsonFileInput" accept=".json" style="display:none;">
+                </label>
+                <div id="importStatus" class="backup-status"></div>
+              </div>
+
+              <div class="backup-card parchment-paper danger-zone">
+                <div class="backup-icon">⚠️</div>
+                <h4>Reset to CSE Demo State</h4>
+                <p>Restore the default sample CSE undergraduate profile with all starter projects and skills.</p>
+                <button class="vintage-btn btn-outline btn-danger" id="adminResetDefaultBtn">Reset to Default Template</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

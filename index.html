@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="vintage-parchment">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alex Chen | Computer Science & Engineering Portfolio</title>
+  <meta name="description" content="Personal portfolio of Alex Chen, Computer Science & Engineering undergraduate specializing in Systems Programming, Compilers, Algorithms, and Full-Stack Architecture. Complete with a vintage 2D aesthetic and real-time Admin Panel.">
+  <meta name="keywords" content="Computer Science, CSE Student, Systems Programming, Compilers, C++, Algorithms, Developer Portfolio, Vintage 2D, Retro Terminal">
+  <meta name="author" content="Alex Chen">
+
+  <!-- Google Fonts for Vintage 2D Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="assets/images/avatar-pixel.png">
+</head>
+<body class="vintage-body">
+
+  <!-- CRT Scanlines Overlay -->
+  <div class="vintage-overlay" id="vintageOverlay" aria-hidden="true"></div>
+
+  <!-- Top Vintage Header -->
+  <header class="vintage-header" id="header">
+    <div class="header-container">
+      <div class="brand-badge">
+        <a href="index.html" class="brand-link">
+          <span class="brand-bracket">[</span>
+          <span class="brand-text" id="headerBrand">CSE://ALEX_CHEN</span>
+          <span class="brand-bracket">]</span>
+        </a>
+        <div class="status-pill" id="systemStatusPill">
+          <span class="status-indicator"></span>
+          <span class="status-label" id="headerStatus">KERNEL READY • OPEN TO WORK</span>
+        </div>
+      </div>
+
+      <!-- Navigation to Separate Pages -->
+      <nav class="nav-links" id="mainNav">
+        <a href="index.html" class="nav-item active"><span>00.</span> Home</a>
+        <a href="about.html" class="nav-item"><span>01.</span> About</a>
+        <a href="terminal.html" class="nav-item"><span>02.</span> Terminal</a>
+        <a href="projects.html" class="nav-item"><span>03.</span> Projects</a>
+        <a href="skills.html" class="nav-item"><span>04.</span> Skills</a>
+        <a href="academics.html" class="nav-item"><span>05.</span> Academics</a>
+        <a href="experience.html" class="nav-item"><span>06.</span> Experience</a>
+        <a href="contact.html" class="nav-item"><span>07.</span> Dispatch</a>
+      </nav>
+
+      <div class="header-controls">
+        <!-- Theme Switcher Dropdown -->
+        <div class="theme-dropdown">
+          <button class="vintage-btn btn-sm btn-icon" id="themeDropdownBtn" title="Switch Vintage Theme">
+            <span class="btn-icon-symbol">🗲</span>
+            <span class="theme-active-name" id="themeActiveName">Parchment</span>
+          </button>
+          <div class="dropdown-menu" id="themeMenu">
+            <button class="theme-option active" data-theme-val="vintage-parchment">📜 Parchment & Ink</button>
+            <button class="theme-option" data-theme-val="terminal-phosphor">📟 CRT Green Phosphor</button>
+            <button class="theme-option" data-theme-val="blueprint-cyan">📐 Blueprint Cyan</button>
+            <button class="theme-option" data-theme-val="amber-crt">💡 Amber Gas Discharge</button>
+          </div>
+        </div>
+
+        <!-- Audio Mechanical Click FX Toggle -->
+        <button class="vintage-btn btn-sm btn-icon" id="audioToggleBtn" title="Toggle Mechanical Typewriter Audio">
+          <span id="audioIcon">🔊</span>
+        </button>
+      </div>
+
+      <!-- Mobile Hamburger Toggle -->
+      <button class="mobile-toggle" id="mobileMenuToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Public Main Content -->
+  <main class="portfolio-main">
+
+    <!-- HERO SECTION -->
+    <section class="section hero-section" id="hero" style="position: relative;">
+      <div class="container hero-grid">
+        
+        <!-- Left: Hero Intro & Typewriter Moniker -->
+        <div class="hero-content">
+          <div class="stamp-tag-wrapper">
+            <span class="vintage-stamp-badge" id="heroStampBadge">SCARFACE LAB • CSE SYSTEMS</span>
+            <span class="vintage-tag" id="heroYearTag">CLASS OF '26</span>
+            <span class="scarface-badge"><span class="scarface-badge-icon">🏛️</span> Scarface Lab</span>
+          </div>
+
+          <h1 class="hero-title">
+            <span class="hero-greeting">HELLO WORLD, I'M</span>
+            <span class="hero-name" id="heroName">Alex Chen</span>
+          </h1>
+
+          <div class="typewriter-console">
+            <span class="prompt-prefix">cse@workstation:~$</span>
+            <span class="typewriter-text" id="typewriterText"></span>
+            <span class="typewriter-cursor">█</span>
+          </div>
+
+          <p class="hero-bio" id="heroBio">
+            Third-year CSE undergraduate passionate about exploring computing from silicon transistors to distributed web architectures. Building optimizing bytecode compilers, dissecting OS kernels, and engineering bloat-free systems.
+          </p>
+
+          <!-- Quick Metrics Bar -->
+          <div class="hero-stats-bar" id="heroStatsBar"></div>
+
+          <!-- Hero Action Buttons -->
+          <div class="hero-actions">
+            <a href="projects.html" class="vintage-btn btn-primary">
+              <span class="btn-symbol">❖</span> Inspect Projects
+            </a>
+            <a href="terminal.html" class="vintage-btn btn-secondary">
+              <span class="btn-symbol">&gt;_</span> Launch Terminal
+            </a>
+            <a href="contact.html" class="vintage-btn btn-outline">
+              <span class="btn-symbol">✉</span> Send Dispatch
+            </a>
+            <a href="#" class="vintage-btn btn-outline" id="resumeDownloadBtn" target="_blank" rel="noopener">
+              <span class="btn-symbol">📄</span> Download CV
+            </a>
+          </div>
+
+          <!-- Social Handles Bar -->
+          <div class="hero-social-links" id="heroSocialLinks"></div>
+        </div>
+
+        <!-- Right: 2D Vintage Developer Framing & Avatar Card -->
+        <div class="hero-visual" style="position: relative;">
+          <!-- Floating Interactive Retro Boxes -->
+          <button type="button" class="floating-prop prop-vault" id="openVaultFloatingBtn" title="Click to open Personal Directory (Password Protected)">
+            <span>📁</span> [PERSONAL DIRECTORY 🔒]
+          </button>
+          <button type="button" class="floating-prop prop-home" id="openHomeFloatingBtn" title="Station Master Home Portal">
+            <span>🏠</span> [HOME PANEL]
+          </button>
+          <button type="button" class="floating-prop prop-music" id="openMusicBoxFloatingBtn" title="Click to open Genshin BGM Jukebox & Tracklist">
+            <span>🎵</span> [ACOUSTIC JUKEBOX ▾]
+          </button>
+          <button type="button" class="floating-prop prop-snow" id="toggleSnowFloatingBtn" title="Toggle Snowfall Weather (Gentle / Blizzard / Off)">
+            <span>❄️</span> <span id="heroSnowText">[SNOW: ON]</span>
+          </button>
+
+          <div class="vintage-card polaroid-frame">
+            <div class="paper-clip" aria-hidden="true"></div>
+            <div class="stamp-seal-badge" aria-hidden="true">
+              <span>EST. 2024</span>
+              <span>VERIFIED CSE</span>
+            </div>
+
+            <div class="avatar-container">
+              <img src="assets/uploads/Mir_jpg.jpg" alt="Mir A K Sajid Profile Picture" id="heroAvatarImg" class="avatar-img" onerror="this.onerror=null; this.src='assets/images/avatar-notionist.png';">
+              <div class="avatar-decorations">
+                <span class="decor-corner top-left">+</span>
+                <span class="decor-corner top-right">+</span>
+                <span class="decor-corner bottom-left">+</span>
+                <span class="decor-corner bottom-right">+</span>
+              </div>
+            </div>
+
+            <!-- Avatar Switcher Toggles -->
+            <div class="avatar-style-picker">
+              <span class="picker-label">2D Persona:</span>
+              <button class="avatar-pill active" data-avatar="assets/uploads/Mir_jpg.jpg" title="Mir's Portrait Photo">📸 Photo</button>
+              <button class="avatar-pill" data-avatar="assets/images/avatar-notionist.png" title="Hand-Drawn 2D">Hand-Drawn</button>
+              <button class="avatar-pill" data-avatar="assets/images/avatar-pixel.png" title="8-Bit Retro Pixel">8-Bit Pixel</button>
+              <button class="avatar-pill" data-avatar="assets/images/avatar-retro-bot.png" title="Vintage Bot">Robot</button>
+            </div>
+
+            <div class="polaroid-caption">
+              <div class="caption-title" id="polaroidDegree">B.S. Computer Science & Eng.</div>
+              <div class="caption-sub" id="polaroidGpa">GPA: 3.89 / 4.00 • Systems Focus</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DIRECTORY / SECTOR NAVIGATOR TILES -->
+    <section class="section" style="padding-top: 1rem; padding-bottom: 4rem;">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-stamp">PORTFOLIO INDEX & DIRECTORY</div>
+          <h2 class="section-title">Explore Dedicated Sectors</h2>
+          <p class="section-subtitle">Navigate to individual specialized sectors of this digital engineering station.</p>
+          <div class="section-divider">~ ❦ ~</div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
+          
+          <!-- Sector 01: About -->
+          <a href="about.html" class="parchment-paper" style="display:flex; flex-direction:column; gap:0.5rem; transition: transform 0.15s ease, box-shadow 0.15s ease;">
+            <div class="card-ticket-header">
+              <span class="ticket-no">SECTOR 01</span>
+              <span class="ticket-status">READ SPEC</span>
+            </div>
+            <h3 style="font-family:var(--font-serif); font-size:1.35rem;">📜 The Philosophy & Bio</h3>
+            <p style="font-size:0.88rem; color:var(--ink-secondary); line-height:1.6; flex:1;">
+              Detailed mechanical manifesto, engineering values, principles of low-level resource efficiency, and research pursuits.
+            </p>
+            <span class="vintage-btn btn-sm btn-outline" style="align-self:flex-start; margin-top:0.5rem;">Enter Sector 01 →</span>
+          </a>
+
+          <!-- Sector 02: Terminal -->
+          <a href="terminal.html" class="parchment-paper" style="display:flex; flex-direction:column; gap:0.5rem; transition: transform 0.15s ease, box-shadow 0.15s ease;">
+            <div class="card-ticket-header">
+              <span class="ticket-no">SECTOR 02</span>
+              <span class="ticket-status">CLI ACTIVE</span>
+            </div>
+            <h3 style="font-family:var(--font-serif); font-size:1.35rem;">📟 Teletype Terminal (REPL)</h3>
+            <p style="font-size:0.88rem; color:var(--ink-secondary); line-height:1.6; flex:1;">
+              Authentic VT-100 interactive shell. Run real system commands, inspect skills, explore system metrics, and run scripts.
+            </p>
+            <span class="vintage-btn btn-sm btn-outline" style="align-self:flex-start; margin-top:0.5rem;">Launch Console →</span>
+          </a>
+
+          <!-- Sector 03: Projects -->
+          <a href="projects.html" class="parchment-paper" style="display:flex; flex-direction:column; gap:0.5rem; transition: transform 0.15s ease, box-shadow 0.15s ease;">
+            <div class="card-ticket-header">
+              <span class="ticket-no">SECTOR 03</span>
+              <span class="ticket-status">6 BLUEPRINTS</span>
+            </div>
+            <h3 style="font-family:var(--font-serif); font-size:1.35rem;">❖ Engineered Blueprints</h3>
+            <p style="font-size:0.88rem; color:var(--ink-secondary); line-height:1.6; flex:1;">
+              Compilers, 32-bit x86 OS kernel, Raft consensus storage, neural network engines, and interactive algorithm canvases.
+            </p>
+            <span class="vintage-btn btn-sm btn-outline" style="align-self:flex-start; margin-top:0.5rem;">Browse Blueprints →</span>
+          </a>
+
+          <!-- Sector 04: Skills -->
+          <a href="skills.html" class="parchment-paper" style="display:flex; flex-direction:column; gap:0.5rem; transition: transform 0.15s ease, box-shadow 0.15s ease;">
+            <div class="card-ticket-header">
+              <span class="ticket-no">SECTOR 04</span>
+              <span class="ticket-status">12 COMPETENCIES</span>
+            </div>
+            <h3 style="font-family:var(--font-serif); font-size:1.35rem;">🧠 Technical Competencies</h3>
+            <p style="font-size:0.88rem; color:var(--ink-secondary); line-height:1.6; flex:1;">
+              Core Computer Science fundamentals, low-level systems programming languages, frameworks, and developer tooling.
+            </p>
+            <span class="vintage-btn btn-sm btn-outline" style="align-self:flex-start; margin-top:0.5rem;">Inspect Matrix →</span>
+          </a>
+
+          <!-- Sector 05: Academics -->
+          <a href="academics.html" class="parchment-paper" style="display:flex; flex-direction:column; gap:0.5rem; transition: transform 0.15s ease, box-shadow 0.15s ease;">
+            <div class="card-ticket-header">
+              <span class="ticket-no">SECTOR 05</span>
+              <span class="ticket-status">3.89 GPA</span>
+            </div>
+            <h3 style="font-family:var(--font-serif); font-size:1.35rem;">🎓 Academic Curriculum</h3>
+            <p style="font-size:0.88rem; color:var(--ink-secondary); line-height:1.6; flex:1;">
+              Degree coursework grades, Dean's honor list standings, ACM student chapter affiliations, and computational theory studies.
+            </p>
+            <span class="vintage-btn btn-sm btn-outline" style="align-self:flex-start; margin-top:0.5rem;">View Transcript →</span>
+          </a>
+
+          <!-- Sector 06: Experience -->
+          <a href="experience.html" class="parchment-paper" style="display:flex; flex-direction:column; gap:0.5rem; transition: transform 0.15s ease, box-shadow 0.15s ease;">
+            <div class="card-ticket-header">
+              <span class="ticket-no">SECTOR 06</span>
+              <span class="ticket-status">TIMELINE</span>
+            </div>
+            <h3 style="font-family:var(--font-serif); font-size:1.35rem;">🎟️ Punch-Card Experience Log</h3>
+            <p style="font-size:0.88rem; color:var(--ink-secondary); line-height:1.6; flex:1;">
+              Software engineering internships, Data Structures & Algorithms undergraduate teaching assistantships, and leadership roles.
+            </p>
+            <span class="vintage-btn btn-sm btn-outline" style="align-self:flex-start; margin-top:0.5rem;">Review History →</span>
+          </a>
+
+          <!-- Sector 07: Dispatch -->
+          <a href="contact.html" class="parchment-paper" style="display:flex; flex-direction:column; gap:0.5rem; transition: transform 0.15s ease, box-shadow 0.15s ease;">
+            <div class="card-ticket-header">
+              <span class="ticket-no">SECTOR 07</span>
+              <span class="ticket-status">OPEN LINE</span>
+            </div>
+            <h3 style="font-family:var(--font-serif); font-size:1.35rem;">✉️ Telegram Dispatch</h3>
+            <p style="font-size:0.88rem; color:var(--ink-secondary); line-height:1.6; flex:1;">
+              Transmit direct correspondence for internship opportunities, research collaborations, or technical discussions.
+            </p>
+            <span class="vintage-btn btn-sm btn-outline" style="align-self:flex-start; margin-top:0.5rem;">Transmit Telegram →</span>
+          </a>
+
+          <!-- Sector 08: Personal Directory (Google Drive Filesystem) -->
+          <div class="parchment-paper" id="openVaultTileBtn" role="button" tabindex="0" style="display:flex; flex-direction:column; gap:0.5rem; cursor:pointer; border-color:var(--accent-patina); transition: transform 0.15s ease, box-shadow 0.15s ease;">
+            <div class="card-ticket-header">
+              <span class="ticket-no">SECTOR 08</span>
+              <span class="ticket-status" style="color:var(--accent-patina);">ENCRYPTED 🔒</span>
+            </div>
+            <h3 style="font-family:var(--font-serif); font-size:1.35rem;">📁 Personal Cloud Drive & Files</h3>
+            <p style="font-size:0.88rem; color:var(--ink-secondary); line-height:1.6; flex:1;">
+              Curated engineering textbooks, compiler specifications, distributed system archives, and competitive programming cheatsheets hosted on Google Drive.
+            </p>
+            <span class="vintage-btn btn-sm btn-primary" style="align-self:flex-start; margin-top:0.5rem;">🔓 Unlock Drive Filesystem →</span>
+          </div>
+
+          <!-- Sector 09: Music Studio & Jukebox -->
+          <div class="parchment-paper" id="openMusicTileBtn" role="button" tabindex="0" style="display:flex; flex-direction:column; gap:0.5rem; cursor:pointer; border-color:var(--accent-rust); transition: transform 0.15s ease, box-shadow 0.15s ease;">
+            <div class="card-ticket-header">
+              <span class="ticket-no">SECTOR 09</span>
+              <span class="ticket-status" style="color:var(--accent-rust);">ACOUSTIC BGM 🎵</span>
+            </div>
+            <h3 style="font-family:var(--font-serif); font-size:1.35rem;">🎵 Genshin Impact Jukebox</h3>
+            <p style="font-size:0.88rem; color:var(--ink-secondary); line-height:1.6; flex:1;">
+              Atmospheric acoustic fantasy soundtrack deck with full tracklisting, live visualizer, custom playlist methods, and volume control.
+            </p>
+            <span class="vintage-btn btn-sm btn-outline" style="align-self:flex-start; margin-top:0.5rem;">▶ Expand Jukebox Console →</span>
+          </div>
+
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- VINTAGE FOOTER -->
+  <footer class="vintage-footer">
+    <div class="container footer-content">
+      <div class="footer-left">
+        <div class="footer-seal">
+          <div class="seal-inner">
+            <span>CSE</span>
+            <span>CRAFT</span>
+          </div>
+        </div>
+        <div class="footer-text">
+          <p class="footer-title" id="footerBrand">Mir A K Sajid • Computer Science & Engineering Student</p>
+          <p class="footer-copy">Made on Scarface Lab</p>
+        </div>
+      </div>
+
+      <div class="footer-right">
+        <div class="system-telemetry">
+          <span class="telem-item">UPTIME: <strong id="telemUptime">99.98%</strong></span>
+          <span class="telem-item">MEM_LEAKS: <strong>0</strong></span>
+          <span class="telem-item">LOCAL_TIME: <strong id="telemTime">--:--:--</strong></span>
+        </div>
+        <div class="footer-quick-links">
+          <a href="index.html">Home</a>
+          <span class="sep">|</span>
+          <a href="projects.html">Projects</a>
+          <span class="sep">|</span>
+          <a href="terminal.html">Terminal</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Personal Vault Password Modal -->
+  <div class="vintage-modal-overlay" id="vaultPasswordModal" aria-hidden="true">
+    <div class="vintage-modal-dialog parchment-paper" style="max-width: 440px;">
+      <div class="modal-header">
+        <div class="modal-stamp">ENCRYPTED ARCHIVE</div>
+        <h3 class="modal-title">🔒 Personal Directory Access</h3>
+        <button class="modal-close-btn" id="closeVaultPasswordModalBtn" aria-label="Close modal">✕</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.88rem; color: var(--ink-secondary); margin-bottom: 1.25rem;">
+          This private cloud directory contains personal study notes, textbooks, and Google Drive files. Enter the access password to decrypt the filesystem. (Default: <code>1234</code>)
+        </p>
+        <form id="vaultPasswordForm">
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label">Vault Access Password</label>
+            <div style="display: flex; gap: 0.5rem;">
+              <input type="password" id="vaultPasswordInput" class="vintage-input" placeholder="Enter password (e.g. 1234)..." value="1234" required autofocus style="flex: 1;">
+              <button type="submit" class="vintage-btn btn-primary">Decrypt 🔓</button>
+            </div>
+            <div id="vaultPasswordFeedback" style="font-family: var(--font-mono); font-size: 0.8rem; margin-top: 0.5rem;"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Personal Directory & Google Drive Filesystem Modal -->
+  <div class="vintage-modal-overlay" id="personalDirectoryModal" aria-hidden="true">
+    <div class="vintage-modal-dialog parchment-paper" style="max-width: 920px; max-height: 90vh; display: flex; flex-direction: column;">
+      <div class="modal-header" style="flex-wrap: wrap; gap: 0.75rem;">
+        <div style="display: flex; align-items: center; gap: 0.5rem; flex: 1; min-width: 260px;">
+          <div class="modal-stamp">GOOGLE DRIVE VAULT</div>
+          <span style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--ink-secondary);" id="vaultPathDisplay">drive://mir-sajid/personal_vault/</span>
+        </div>
+        <div style="display: flex; gap: 0.5rem; align-items: center;">
+          <button type="button" class="vintage-btn btn-sm btn-primary" id="toggleAddDriveFileBtn">➕ Add File Link</button>
+          <button type="button" class="vintage-btn btn-sm btn-outline btn-danger" id="lockVaultBtn" title="Relock Directory">🔒 Lock</button>
+          <button class="modal-close-btn" id="closePersonalDirectoryModalBtn" aria-label="Close modal">✕</button>
+        </div>
+      </div>
+
+      <!-- Add New File Form Drawer (Collapsible) -->
+      <div id="vaultAddFileDrawer" style="display: none; background: var(--bg-subtle); padding: 1rem; border: 1px solid var(--border-color); margin-bottom: 1rem; border-radius: var(--radius-badge);">
+        <h5 style="margin-bottom: 0.5rem; font-family: var(--font-serif); font-size: 1.05rem;">➕ Add Google Drive File / Resource</h5>
+        <form id="vaultAddFileForm" class="form-grid-2">
+          <div class="form-group" style="margin-bottom: 0.5rem;">
+            <label class="form-label" style="font-size: 0.75rem;">File Title / Name</label>
+            <input type="text" id="newDriveFileName" class="vintage-input" placeholder="e.g. Distributed_Systems_Notes.pdf" required>
+          </div>
+          <div class="form-group" style="margin-bottom: 0.5rem;">
+            <label class="form-label" style="font-size: 0.75rem;">Google Drive Link URL</label>
+            <input type="url" id="newDriveFileUrl" class="vintage-input" placeholder="https://drive.google.com/file/d/..." required>
+          </div>
+          <div class="form-group" style="margin-bottom: 0.5rem;">
+            <label class="form-label" style="font-size: 0.75rem;">Folder / Category</label>
+            <input type="text" id="newDriveFileFolder" class="vintage-input" placeholder="e.g. OS & Compilers" required list="driveFolderList">
+            <datalist id="driveFolderList"></datalist>
+          </div>
+          <div class="form-group" style="margin-bottom: 0.5rem;">
+            <label class="form-label" style="font-size: 0.75rem;">File Type & Estimated Size</label>
+            <div style="display: flex; gap: 0.5rem;">
+              <select id="newDriveFileType" class="vintage-input vintage-select" style="flex: 1;">
+                <option value="pdf">📄 PDF Document</option>
+                <option value="zip">📦 ZIP Archive</option>
+                <option value="code">💻 Code / Script</option>
+                <option value="doc">📝 Word / Notes</option>
+                <option value="sheet">📊 Spreadsheet</option>
+                <option value="img">🖼️ Image / Slide</option>
+              </select>
+              <input type="text" id="newDriveFileSize" class="vintage-input" placeholder="e.g. 5.2 MB" style="width: 110px;">
+            </div>
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1; margin-bottom: 0.5rem;">
+            <label class="form-label" style="font-size: 0.75rem;">Description / Memo (Optional)</label>
+            <input type="text" id="newDriveFileDesc" class="vintage-input" placeholder="Brief notes about this file...">
+          </div>
+          <div style="grid-column: 1 / -1; display: flex; gap: 0.5rem; justify-content: flex-end;">
+            <button type="submit" class="vintage-btn btn-sm btn-primary">Save to Drive Directory</button>
+            <button type="button" class="vintage-btn btn-sm btn-outline" id="cancelAddDriveFileBtn">Cancel</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Search & Folder Filter Bar -->
+      <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1rem; align-items: center;">
+        <input type="text" id="vaultSearchInput" class="vintage-input" placeholder="🔍 Search files, notes, or formats..." style="flex: 1; min-width: 220px;">
+        <div id="vaultFolderFilterChips" style="display: flex; gap: 0.4rem; overflow-x: auto; padding-bottom: 2px;"></div>
+      </div>
+
+      <!-- File System Table / Grid -->
+      <div class="vault-files-table-wrap" style="overflow-y: auto; flex: 1; border: 1px solid var(--border-color); background: var(--bg-surface);">
+        <table class="vintage-table" style="width: 100%; border-collapse: collapse;">
+          <thead>
+            <tr>
+              <th style="width: 45px; text-align: center;">Type</th>
+              <th>Resource Name</th>
+              <th>Folder</th>
+              <th>Size</th>
+              <th>Updated</th>
+              <th style="text-align: right;">Action</th>
+            </tr>
+          </thead>
+          <tbody id="vaultFileTableBody"></tbody>
+        </table>
+      </div>
+      <div style="padding-top: 0.75rem; display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-muted); flex-wrap: wrap; gap: 0.5rem;">
+        <span id="vaultStatsDisplay">0 files indexed</span>
+        <span>☁ Hosted on Google Drive • Vintage 2D Filesystem</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Expanded Genshin BGM Jukebox Modal -->
+  <div class="vintage-modal-overlay" id="expandedMusicModal" aria-hidden="true">
+    <div class="vintage-modal-dialog parchment-paper" style="max-width: 760px; max-height: 90vh; display: flex; flex-direction: column;">
+      <div class="modal-header">
+        <div class="modal-stamp">GENSHIN IMPACT ACOUSTIC BGM</div>
+        <h3 class="modal-title">🎵 Atmospheric Jukebox & Deck</h3>
+        <button class="modal-close-btn" id="closeExpandedMusicModalBtn" aria-label="Close modal">✕</button>
+      </div>
+      <div class="modal-body" style="overflow-y: auto; display: flex; flex-direction: column; gap: 1.25rem;">
+        
+        <!-- Currently Playing Hero Console -->
+        <div class="jukebox-hero-card" id="jukeboxHeroCard" style="background: var(--bg-subtle); border: 2px solid var(--border-color); padding: 1.25rem; display: flex; gap: 1.25rem; align-items: center; flex-wrap: wrap; border-radius: var(--radius-badge);">
+          <div class="jukebox-disc-art" style="width: 80px; height: 80px; background: #1c1815; border-radius: 50%; border: 4px solid var(--accent-rust); display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-tactile-sm);">
+            <span style="font-size: 2rem;" id="jukeboxDiscSpin">💿</span>
+          </div>
+          <div style="flex: 1; min-width: 220px;">
+            <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.25rem;">
+              <span class="status-indicator-dot" id="jukeboxLiveDot"></span>
+              <span id="jukeboxLiveTag" style="font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; color: var(--accent-rust);">🍃 Mondstadt Winds</span>
+            </div>
+            <h4 id="jukeboxCurrentTitle" style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 0.5rem;">Dawn Winery Tavern (Acoustic)</h4>
+            
+            <!-- Controls -->
+            <div style="display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap;">
+              <button type="button" class="vintage-btn btn-sm" id="jukeboxPrevBtn">⏮ Prev</button>
+              <button type="button" class="vintage-btn btn-sm btn-primary" id="jukeboxPlayBtn" style="min-width: 90px;">▶ Play</button>
+              <button type="button" class="vintage-btn btn-sm" id="jukeboxNextBtn">⏭ Next</button>
+              <div style="display: flex; align-items: center; gap: 0.4rem; margin-left: auto; font-family: var(--font-mono); font-size: 0.75rem;">
+                <span>🔊</span>
+                <input type="range" id="jukeboxVolumeSlider" min="0" max="1" step="0.05" value="0.35" style="width: 85px; accent-color: var(--accent-rust);">
+                <span id="jukeboxVolumeVal">35%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Full Playlist Table -->
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <h5 style="font-family: var(--font-mono); font-size: 0.88rem; font-weight: 700;">🎶 Complete Tracklist Catalog</h5>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-muted);">Tap any song row to play immediately</span>
+          </div>
+          <div style="border: 1px solid var(--border-color); overflow: hidden; background: var(--bg-surface);">
+            <table class="vintage-table" style="width: 100%; border-collapse: collapse;">
+              <thead>
+                <tr>
+                  <th style="width: 50px;">Track</th>
+                  <th>Soundtrack Title</th>
+                  <th>Region / Motif</th>
+                  <th style="text-align: right;">Action</th>
+                </tr>
+              </thead>
+              <tbody id="jukeboxTrackTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-secondary); background: var(--bg-surface); padding: 0.75rem; border: 1px dashed var(--border-color); border-radius: var(--radius-badge);">
+          💡 <strong>How to Play:</strong> Tap any track in the catalog above to immediately switch and play. You can also adjust volume in real time or add new soundtrack tracks through the management portal.
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating 2D Retro Quick Dock HUD -->
+  <aside class="floating-hud-dock" id="floatingHudDock" role="toolbar" aria-label="Floating Navigation Hub">
+    <span class="dock-title">2D HUD:</span>
+    <button type="button" class="dock-pill pill-home" id="dockHomeBtn" title="Return to Home Station">
+      <span>🏠</span> Home Panel
+    </button>
+    <button type="button" class="dock-pill pill-vault" id="dockVaultBtn" title="Open Encrypted Personal Directory">
+      <span>📁</span> Directory 🔒
+    </button>
+    <button type="button" class="dock-pill pill-music" id="dockMusicBtn" title="Expand Genshin Jukebox Deck">
+      <span>🎵</span> Jukebox ▾
+    </button>
+    <button type="button" class="dock-pill pill-snow" id="dockSnowBtn" title="Toggle Snowfall Weather">
+      <span>❄️</span> <span id="snowStatusText">Snow ON</span>
+    </button>
+  </aside>
+
+  <script src="script.js"></script>
+</body>
+</html>

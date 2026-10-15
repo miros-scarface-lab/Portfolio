@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="vintage-parchment">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01. About & Philosophy | Alex Chen CSE Portfolio</title>
+  <meta name="description" content="Engineering philosophy, mechanical sympathy, core principles of computation, and academic pursuit of Alex Chen.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="assets/images/avatar-pixel.png">
+</head>
+<body class="vintage-body">
+
+  <div class="vintage-overlay" id="vintageOverlay" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="vintage-header" id="header">
+    <div class="header-container">
+      <div class="brand-badge">
+        <a href="index.html" class="brand-link">
+          <span class="brand-bracket">[</span>
+          <span class="brand-text" id="headerBrand">CSE://ALEX_CHEN</span>
+          <span class="brand-bracket">]</span>
+        </a>
+        <div class="status-pill" id="systemStatusPill">
+          <span class="status-indicator"></span>
+          <span class="status-label" id="headerStatus">KERNEL READY • OPEN TO WORK</span>
+        </div>
+      </div>
+
+      <nav class="nav-links" id="mainNav">
+        <a href="index.html" class="nav-item"><span>00.</span> Home</a>
+        <a href="about.html" class="nav-item active"><span>01.</span> About</a>
+        <a href="terminal.html" class="nav-item"><span>02.</span> Terminal</a>
+        <a href="projects.html" class="nav-item"><span>03.</span> Projects</a>
+        <a href="skills.html" class="nav-item"><span>04.</span> Skills</a>
+        <a href="academics.html" class="nav-item"><span>05.</span> Academics</a>
+        <a href="experience.html" class="nav-item"><span>06.</span> Experience</a>
+        <a href="contact.html" class="nav-item"><span>07.</span> Dispatch</a>
+      </nav>
+
+      <div class="header-controls">
+        <div class="theme-dropdown">
+          <button class="vintage-btn btn-sm btn-icon" id="themeDropdownBtn" title="Switch Vintage Theme">
+            <span class="btn-icon-symbol">🗲</span>
+            <span class="theme-active-name" id="themeActiveName">Parchment</span>
+          </button>
+          <div class="dropdown-menu" id="themeMenu">
+            <button class="theme-option active" data-theme-val="vintage-parchment">📜 Parchment & Ink</button>
+            <button class="theme-option" data-theme-val="terminal-phosphor">📟 CRT Green Phosphor</button>
+            <button class="theme-option" data-theme-val="blueprint-cyan">📐 Blueprint Cyan</button>
+            <button class="theme-option" data-theme-val="amber-crt">💡 Amber Gas Discharge</button>
+          </div>
+        </div>
+
+        <button class="vintage-btn btn-sm btn-icon" id="audioToggleBtn" title="Toggle Mechanical Audio">
+          <span id="audioIcon">🔊</span>
+        </button>
+      </div>
+
+      <button class="mobile-toggle" id="mobileMenuToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Page Banner -->
+  <div class="page-banner">
+    <div class="container">
+      <div class="page-breadcrumbs">
+        <a href="index.html">Index</a> / <span>Sector 01</span> / <span>About & Manifesto</span>
+      </div>
+      <h1 class="page-title">01. The Engineering Philosophy</h1>
+      <p class="page-lead">
+        A manifesto on computational mechanical sympathy, low-level architecture, deterministic engineering, and academic focus.
+      </p>
+    </div>
+  </div>
+
+  <main class="container" style="padding-bottom: 5rem;">
+    <div class="about-grid">
+      
+      <!-- Philosophy Card -->
+      <div class="about-card parchment-paper">
+        <div class="card-ticket-header">
+          <span class="ticket-no">MANIFESTO SPEC: CSE-CORE-2026</span>
+          <span class="ticket-status">OPERATIONAL</span>
+        </div>
+        <h2 class="about-card-title">Principles of Computation</h2>
+        <p class="about-text">
+          I approach software engineering like antique watchmaking: mechanical precision, zero accidental complexity, and utmost respect for machine hardware.
+        </p>
+        <p class="about-text">
+          In an era where simple text editors require hundreds of megabytes of memory, I build software that respects cache locality, minimises allocation churn, and achieves predictability.
+        </p>
+        <div class="philosophy-tags" style="margin-top: 1.5rem;">
+          <span class="phil-tag">O(1) Memory Footprint</span>
+          <span class="phil-tag">Zero-Cost Abstractions</span>
+          <span class="phil-tag">Deterministic Concurrency</span>
+          <span class="phil-tag">POSIX Standards</span>
+          <span class="phil-tag">Cache Locality</span>
+          <span class="phil-tag">SIMD Vectorization</span>
+        </div>
+      </div>
+
+      <!-- Academic Background & Specs -->
+      <div class="about-card parchment-paper">
+        <div class="card-ticket-header">
+          <span class="ticket-no">REGISTRY: ACADEMIC-DISCIPLINE</span>
+          <span class="ticket-status">HONORS ROLL</span>
+        </div>
+        <h2 class="about-card-title">Academic & Research Pursuit</h2>
+        <p class="about-text">
+          As a third-year Computer Science & Engineering undergraduate, my primary studies center around compilers, memory virtualization models, distributed fault tolerance, and algorithmic efficiency.
+        </p>
+        <div class="about-specs-list" style="margin-top: 1.5rem;">
+          <div class="spec-row">
+            <span class="spec-name">Primary Languages:</span>
+            <span class="spec-val">C++, C, Python, Go, Rust, TypeScript</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-name">Systems Focus:</span>
+            <span class="spec-val">Compilers, Kernels, Distributed Storage (Raft)</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-name">Teaching Position:</span>
+            <span class="spec-val">Undergraduate TA for Data Structures & Algorithms</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-name">Competitive Code:</span>
+            <span class="spec-val">520+ LeetCode Problems (Top 6% Global Rating)</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-name">Availability:</span>
+            <span class="spec-val" id="aboutStatusVal">Open for Summer/Fall 2026 SWE Internships</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Additional Editorial Details -->
+    <div class="parchment-paper" style="margin-top: 2rem;">
+      <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 0.75rem;">The Journey So Far</h3>
+      <p style="font-size: 0.95rem; color: var(--ink-secondary); line-height: 1.7; margin-bottom: 1rem;">
+        My fascination with computing began when I first opened an x86 disassembly window in GDB. Watching high-level language abstractions melt away into registers, stack pointer offsets, and arithmetic logic flags altered my perception of software permanently.
+      </p>
+      <p style="font-size: 0.95rem; color: var(--ink-secondary); line-height: 1.7;">
+        Since then, I've spent my undergraduate career building systems from first principles: writing a custom 32-bit protected-mode kernel, implementing a statically-typed language compiler with an LALR(1) parser, creating a Raft-consensus distributed store, and sharing this passion with junior peers as a Teaching Assistant.
+      </p>
+
+      <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+        <a href="projects.html" class="vintage-btn btn-primary">Proceed to 03. Projects →</a>
+        <a href="terminal.html" class="vintage-btn btn-outline">Launch Interactive Shell →</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="vintage-footer">
+    <div class="container footer-content">
+      <div class="footer-left">
+        <div class="footer-seal"><div class="seal-inner"><span>CSE</span><span>CRAFT</span></div></div>
+        <div class="footer-text">
+          <p class="footer-title" id="footerBrand">Mir A K Sajid • Computer Science & Engineering Student</p>
+          <p class="footer-copy">Made on Scarface Lab</p>
+        </div>
+      </div>
+      <div class="footer-right">
+        <div class="system-telemetry">
+          <span class="telem-item">UPTIME: <strong>99.98%</strong></span>
+          <span class="telem-item">LOCAL_TIME: <strong id="telemTime">--:--:--</strong></span>
+        </div>
+        <div class="footer-quick-links">
+          <a href="index.html">Home</a><span class="sep">|</span>
+          <a href="about.html">About</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

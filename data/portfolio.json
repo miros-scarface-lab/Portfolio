@@ -1,0 +1,446 @@
+{
+  "profile": {
+    "name": "Mir A K Sajid",
+    "role": "Computer Science & Engineering Student",
+    "subtitle": "Systems Engineer, Compiler Enthusiast & Full-Stack Developer",
+    "university": "Department of Computer Science & Engineering",
+    "degree": "B.S. in Computer Science & Engineering (2022 – 2026)",
+    "gpa": "3.89 / 4.00 (Dean's Honor Roll)",
+    "status": "Available for Summer/Fall 2026 SWE Internships",
+    "bio": "Third-year CSE undergraduate passionate about exploring computing from silicon transistors to distributed web architectures. I spend my days building optimizing bytecode compilers, dissecting OS kernels, solving algorithmic challenges on LeetCode, and crafting snappy, bloat-free software systems.",
+    "avatar": "assets/uploads/Mir_jpg.jpg",
+    "avatarStyle": "portrait",
+    "location": "San Francisco, CA / Open to Remote",
+    "email": "alex.chen.cse@example.edu",
+    "github": "https://github.com",
+    "linkedin": "https://linkedin.com",
+    "leetcode": "https://leetcode.com",
+    "codeforces": "https://codeforces.com",
+    "resumeUrl": "#",
+    "stats": [
+      {
+        "label": "LeetCode Solved",
+        "value": "520+"
+      },
+      {
+        "label": "Projects Built",
+        "value": "16+"
+      },
+      {
+        "label": "CGPA",
+        "value": "3.89"
+      },
+      {
+        "label": "Hackathon Wins",
+        "value": "3x"
+      }
+    ]
+  },
+  "projects": [
+    {
+      "id": "proj-1",
+      "title": "VintageOS: 32-Bit Microkernel & Shell",
+      "category": "Systems & OS",
+      "tagline": "Educational x86 kernel with preemptive scheduler & custom filesystem",
+      "description": "A bare-metal 32-bit protected-mode operating system written from scratch in C and x86 Assembly. Implements memory paging, interrupt service routines (IDT/PIC), preemptive round-robin task scheduler, FAT16 filesystem reader, and a vintage 2D shell with 18 built-in Unix-like commands.",
+      "image": "assets/images/project-circuits.jpg",
+      "techStack": [
+        "C",
+        "x86 Assembly",
+        "QEMU",
+        "GDB",
+        "Make",
+        "Linker Scripts"
+      ],
+      "github": "https://github.com/example/vintage-os",
+      "demo": "https://example.com/vintage-os",
+      "year": "2025",
+      "badge": "O(1) Scheduler",
+      "featured": true
+    },
+    {
+      "id": "proj-2",
+      "title": "RetroCompiler: Bytecode VM & Parser",
+      "category": "Compilers & Langs",
+      "tagline": "Statically-typed language compiler with custom register-based VM",
+      "description": "An end-to-end compiler pipeline and runtime virtual machine for 'VintageLang'. Features a handwritten recursive descent lexer, LALR(1) parser with detailed syntax diagnostics, abstract syntax tree (AST) constant folding, and an optimizing bytecode interpreter running 3.2x faster than standard tree-walk evaluators.",
+      "image": "assets/images/project-terminal.jpg",
+      "techStack": [
+        "C++",
+        "C++20",
+        "LLVM",
+        "CMake",
+        "GTest"
+      ],
+      "github": "https://github.com/example/retro-compiler",
+      "demo": "https://example.com/retro-compiler",
+      "year": "2025",
+      "badge": "3.2x Faster",
+      "featured": true
+    },
+    {
+      "id": "proj-3",
+      "title": "AlgoCraft: Interactive Graph & Tree Visualizer",
+      "category": "Web & Algorithms",
+      "tagline": "Step-by-step visual exploration of complex DSA algorithms",
+      "description": "A responsive 2D algorithm canvas designed for CSE students to visually inspect pathfinding (Dijkstra, A*, Floyd-Warshall), Red-Black Tree rotations, dynamic programming memoization tables, and stack frame execution in real time with playback controls and step-by-step state inspection.",
+      "image": "assets/images/project-devdesk.jpg",
+      "techStack": [
+        "TypeScript",
+        "Canvas API",
+        "Algorithms",
+        "Web Audio",
+        "Vite"
+      ],
+      "github": "https://github.com/example/algocraft",
+      "demo": "https://example.com/algocraft",
+      "year": "2024",
+      "badge": "60 FPS Canvas",
+      "featured": true
+    },
+    {
+      "id": "proj-4",
+      "title": "RaftKV: Distributed Consensus Key-Value Engine",
+      "category": "Distributed Systems",
+      "tagline": "Fault-tolerant cluster storage implementing Raft consensus",
+      "description": "A distributed key-value storage engine implementing the Raft distributed consensus algorithm. Handles network partitions, leader election, log replication with write-ahead logging (WAL), log compaction via snapshotting, and linearizable client reads/writes across multi-node clusters.",
+      "image": "assets/images/project-vintage-pc.jpg",
+      "techStack": [
+        "Go",
+        "gRPC",
+        "Protobuf",
+        "Raft Protocol",
+        "Docker"
+      ],
+      "github": "https://github.com/example/raft-kv",
+      "demo": "https://example.com/raft-kv",
+      "year": "2024",
+      "badge": "Linearizable",
+      "featured": true
+    },
+    {
+      "id": "proj-5",
+      "title": "NeuralFromScratch: C++ Deep Learning Engine",
+      "category": "AI / ML & Math",
+      "tagline": "Header-only matrix engine & neural network without frameworks",
+      "description": "A matrix computation and autodiff tensor engine created without any external machine learning dependencies. Implements 2D convolutions, multi-head attention blocks, AdamW optimizer, and SIMD vectorization yielding 98.4% classification accuracy on benchmark datasets.",
+      "image": "assets/images/academics-notes.jpg",
+      "techStack": [
+        "C++",
+        "AVX2 SIMD",
+        "Linear Algebra",
+        "Calculus"
+      ],
+      "github": "https://github.com/example/neural-scratch",
+      "demo": "https://example.com/neural-scratch",
+      "year": "2024",
+      "badge": "0 Dependencies",
+      "featured": false
+    },
+    {
+      "id": "proj-6",
+      "title": "MechTerm: Retro Vintage Terminal Emulator",
+      "category": "Tooling & CLI",
+      "tagline": "Aesthetic mechanical 2D terminal with CRT phosphor shader",
+      "description": "A lightweight web terminal emulator featuring retro phosphor beam bloom, scanline shaders, tactile mechanical click synthesis via Web Audio API, and seamless POSIX shell commands simulation for Unix enthusiasts.",
+      "image": "assets/images/project-keyboard.jpg",
+      "techStack": [
+        "JavaScript",
+        "WebGL",
+        "Web Audio API",
+        "CSS Shaders"
+      ],
+      "github": "https://github.com/example/mech-term",
+      "demo": "https://example.com/mech-term",
+      "year": "2023",
+      "badge": "CRT Shader",
+      "featured": false
+    }
+  ],
+  "skills": [
+    {
+      "name": "Data Structures & Algorithms",
+      "category": "Core CS",
+      "level": 94,
+      "icon": "cplusplus",
+      "desc": "Graphs, DP, Trees, Heaps, Complexity Analysis"
+    },
+    {
+      "name": "Operating Systems & Linux",
+      "category": "Core CS",
+      "level": 90,
+      "icon": "linux",
+      "desc": "Paging, Virtual Memory, Concurrency, Syscalls, POSIX"
+    },
+    {
+      "name": "Database Management (DBMS)",
+      "category": "Core CS",
+      "level": 88,
+      "icon": "postgresql",
+      "desc": "ACID, B+ Trees, Query Optimization, Normalization"
+    },
+    {
+      "name": "Computer Networks",
+      "category": "Core CS",
+      "level": 85,
+      "icon": "linux",
+      "desc": "TCP/IP, Sockets, HTTP/2, DNS, Routing Protocols"
+    },
+    {
+      "name": "C / C++ (C++20)",
+      "category": "Languages",
+      "level": 92,
+      "icon": "cplusplus",
+      "desc": "Pointers, Memory Mgmt, RAII, Templates, STL"
+    },
+    {
+      "name": "Python",
+      "category": "Languages",
+      "level": 90,
+      "icon": "python",
+      "desc": "Scripting, PyTorch, Automation, Data Processing"
+    },
+    {
+      "name": "Rust",
+      "category": "Languages",
+      "level": 78,
+      "icon": "rust",
+      "desc": "Ownership model, Borrow checker, Memory safety"
+    },
+    {
+      "name": "TypeScript / JavaScript",
+      "category": "Languages",
+      "level": 88,
+      "icon": "javascript",
+      "desc": "Async/Await, Strict Types, DOM Canvas, Modern ES"
+    },
+    {
+      "name": "Java",
+      "category": "Languages",
+      "level": 84,
+      "icon": "java",
+      "desc": "OOP, Concurrency, JVM Internals, Design Patterns"
+    },
+    {
+      "name": "React & Modern Web",
+      "category": "Frameworks",
+      "level": 86,
+      "icon": "react",
+      "desc": "State architecture, Hooks, Virtual DOM, CSS"
+    },
+    {
+      "name": "Docker & Containers",
+      "category": "Tools & Systems",
+      "level": 82,
+      "icon": "docker",
+      "desc": "Multi-stage builds, Compose, Container isolation"
+    },
+    {
+      "name": "Git & GitHub",
+      "category": "Tools & Systems",
+      "level": 92,
+      "icon": "git",
+      "desc": "Branching strategies, Rebase, Actions CI/CD"
+    }
+  ],
+  "experience": [
+    {
+      "id": "exp-1",
+      "role": "Systems Software Engineering Intern",
+      "company": "VectorScale Systems",
+      "period": "June 2025 – August 2025",
+      "location": "Palo Alto, CA",
+      "type": "Internship",
+      "description": "Engineered an in-memory packet caching layer in C++ reducing P99 network latency by 32%. Authored end-to-end integration tests using Docker and GTest. Contributed to microservice telemetry tracing handling 50k requests/sec.",
+      "badges": [
+        "C++",
+        "Distributed Systems",
+        "Performance Tuning"
+      ]
+    },
+    {
+      "id": "exp-2",
+      "role": "Undergraduate Teaching Assistant (DSA)",
+      "company": "Department of Computer Science",
+      "period": "August 2024 – May 2025",
+      "location": "University Campus",
+      "type": "Academic",
+      "description": "Conducted weekly lab sessions for 140+ sophomore students covering advanced Graph algorithms, Dynamic Programming, and Red-Black Trees. Developed automated autograder test suites evaluating time and memory bounds.",
+      "badges": [
+        "DSA",
+        "Code Review",
+        "Mentorship",
+        "Python"
+      ]
+    },
+    {
+      "id": "exp-3",
+      "role": "Open Source Systems Lead",
+      "company": "University Hackers & CS Society",
+      "period": "January 2024 – Present",
+      "location": "Student Chapter",
+      "type": "Leadership",
+      "description": "Organized 8 workshops on Linux internals, Git workflows, and competitive programming. Spearheaded the university's annual 36-hour hackathon attracting over 450 student participants.",
+      "badges": [
+        "Linux",
+        "Community",
+        "Leadership",
+        "Competitive Programming"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor of Science in Computer Science & Engineering",
+      "institution": "University School of Computing & Engineering",
+      "period": "2022 – Expected May 2026",
+      "score": "CGPA: 3.89 / 4.00",
+      "highlights": "Dean's Honor List (All Semesters), President of Systems Computing Club, ACM Student Member",
+      "coursework": [
+        "Data Structures & Algorithms (Grade: A)",
+        "Operating Systems & Architecture (Grade: A)",
+        "Database Management Systems (Grade: A)",
+        "Computer Networks (Grade: A-)",
+        "Theory of Computation & Automata (Grade: A)",
+        "Compiler Design (Grade: A)"
+      ]
+    }
+  ],
+  "settings": {
+    "backgroundImage": "assets/uploads/dreamy-lavender-5120x2880-25840_jpg.jpg",
+    "backgroundOpacity": 0.9,
+    "floatingBoxes": true,
+    "floatingIntensity": "normal",
+    "particleDensity": 65,
+    "particleType": "auto",
+    "tickerText": "AVAILABLE FOR SWE INTERNSHIPS • VINTAGE 2D ARCHITECTURE • MADE ON SCARFACE LAB • MIR A K SAJID • SYSTEMS & COMPILERS",
+    "footerText": "Made on Scarface Lab",
+    "footerAuthor": "Mir A K Sajid • Computer Science & Engineering Student",
+    "audio": {
+      "bgmEnabled": true,
+      "volume": 0.35,
+      "currentTrackIdx": 0,
+      "tracks": [
+        {
+          "id": "track-1",
+          "src": "assets/audio/dawn_winery_acoustic.mp3",
+          "tag": "🍃 Mondstadt Winds",
+          "title": "Dawn Winery Tavern (Acoustic)"
+        },
+        {
+          "id": "track-2",
+          "src": "assets/audio/genshin_bgm.mp3",
+          "tag": "🌙 Liyue Nightfall",
+          "title": "Peaceful Piano Exploration"
+        },
+        {
+          "id": "track-3",
+          "src": "assets/audio/genshin_bgm.mp3",
+          "tag": "🌸 Inazuma Breeze",
+          "title": "Autumn Tranquility (Acoustic Koto)"
+        },
+        {
+          "id": "track-4",
+          "src": "assets/audio/dawn_winery_acoustic.mp3",
+          "tag": "🌿 Sumeru Oasis",
+          "title": "Port Ormos Acoustic Rhythms"
+        }
+      ]
+    },
+    "test": "ok"
+  },
+  "personalDirectory": {
+    "password": "1234",
+    "title": "Mir's Personal Drive & Filesystem",
+    "description": "Curated engineering notes, textbooks, research papers, and lab archives hosted on Google Drive.",
+    "folders": [
+      {
+        "id": "f-1",
+        "name": "OS & Compilers",
+        "icon": "⚙️"
+      },
+      {
+        "id": "f-2",
+        "name": "Textbooks & Cheatsheets",
+        "icon": "📚"
+      },
+      {
+        "id": "f-3",
+        "name": "Distributed Systems",
+        "icon": "🌐"
+      },
+      {
+        "id": "f-4",
+        "name": "Competitive Programming",
+        "icon": "⚡"
+      },
+      {
+        "id": "f-5",
+        "name": "Resumes & Certifications",
+        "icon": "🏆"
+      }
+    ],
+    "files": [
+      {
+        "id": "file-1",
+        "name": "VintageOS_32Bit_Kernel_Architecture.pdf",
+        "folder": "OS & Compilers",
+        "size": "4.8 MB",
+        "type": "pdf",
+        "driveUrl": "https://drive.google.com/file/d/example_vintage_os/view",
+        "updated": "2026-10",
+        "desc": "Protected-mode x86 microkernel design specification and syscall ABI documentation."
+      },
+      {
+        "id": "file-2",
+        "name": "Compilers_Bytecode_VM_Specification.pdf",
+        "folder": "OS & Compilers",
+        "size": "8.2 MB",
+        "type": "pdf",
+        "driveUrl": "https://drive.google.com/file/d/example_compiler_vm/view",
+        "updated": "2026-09",
+        "desc": "Grammar AST definitions, constant folding passes, and register-based VM opcode spec."
+      },
+      {
+        "id": "file-3",
+        "name": "Raft_Consensus_Distributed_Store.zip",
+        "folder": "Distributed Systems",
+        "size": "15.4 MB",
+        "type": "zip",
+        "driveUrl": "https://drive.google.com/file/d/example_raft_kv/view",
+        "updated": "2026-08",
+        "desc": "Source code archive, cluster docker-compose configurations, and benchmark outputs."
+      },
+      {
+        "id": "file-4",
+        "name": "DSA_Advanced_Algorithms_Cheatsheet.cpp",
+        "folder": "Competitive Programming",
+        "size": "85 KB",
+        "type": "code",
+        "driveUrl": "https://drive.google.com/file/d/example_dsa_code/view",
+        "updated": "2026-10",
+        "desc": "Graph algorithms (Tarjan, Dijkstra), Segment Tree with Lazy Propagation, and DSU templates."
+      },
+      {
+        "id": "file-5",
+        "name": "Operating_Systems_Three_Easy_Pieces_Notes.pdf",
+        "folder": "Textbooks & Cheatsheets",
+        "size": "11.1 MB",
+        "type": "pdf",
+        "driveUrl": "https://drive.google.com/file/d/example_ostep_notes/view",
+        "updated": "2026-07",
+        "desc": "Summary of virtualization, concurrency primitives (semaphores, mutexes), and persistence."
+      },
+      {
+        "id": "file-6",
+        "name": "Mir_A_K_Sajid_Official_CSE_Resume.pdf",
+        "folder": "Resumes & Certifications",
+        "size": "240 KB",
+        "type": "pdf",
+        "driveUrl": "https://drive.google.com/file/d/example_mir_resume/view",
+        "updated": "2026-10",
+        "desc": "Updated resume for Software Engineering internships and research opportunities."
+      }
+    ]
+  }
+}

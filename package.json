@@ -1,0 +1,14 @@
+{
+  "name": "cse-vintage-developer-portfolio",
+  "version": "1.0.0",
+  "description": "Full professional vintage 2D style portfolio with admin panel for CSE student & developer",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "cors": "^2.8.5"
+  }
+}

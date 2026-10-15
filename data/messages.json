@@ -1,0 +1,32 @@
+[
+  {
+    "id": "msg-1792015002198",
+    "name": "Ada Lovelace",
+    "email": "ada@computing.org",
+    "subject": "Internship Review",
+    "message": "Superb vintage architecture and systems implementation.",
+    "date": "2026-10-14T21:56:42.198Z",
+    "read": false,
+    "starred": false
+  },
+  {
+    "id": "msg-101",
+    "name": "Dr. Arthur Pendelton",
+    "email": "a.pendelton@mit.edu",
+    "subject": "Research Assistantship & Compiler Project Inquiry",
+    "message": "Hi Alex, I reviewed your VintageOS microkernel and the AST constant folding implementation in RetroCompiler. The architecture is cleanly structured and well-documented. Would you be open to discussing an undergraduate research collaboration on virtual machine optimization next semester?",
+    "date": "2026-10-12T14:32:00.000Z",
+    "read": false,
+    "starred": true
+  },
+  {
+    "id": "msg-102",
+    "name": "Sarah Lin",
+    "email": "sarah.lin@strata-tech.io",
+    "subject": "Summer 2026 Systems Software Intern Application",
+    "message": "Hello Alex! Our engineering team at Strata was thoroughly impressed by your Raft consensus implementation in RaftKV. We have an open slot in our Core Infrastructure team for Summer 2026. Let us know if you'd like to schedule an introductory technical conversation.",
+    "date": "2026-10-14T09:15:00.000Z",
+    "read": true,
+    "starred": false
+  }
+]
